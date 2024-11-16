@@ -1,0 +1,42 @@
+<% if(user){ %>
+  <%- include('./partials/_dashboard_nav') %>
+<% }else{ %>
+  <%- include('./partials/_navbar') %>
+<% } %>
+
+<%- include('./partials/_mobile_nav') %>
+
+<div class="ps-product--detail pt-60">
+<div class="main">
+        <div class="ps-container">
+          <div class="row">
+            <div class="col-lg-10 col-md-12 col-lg-offset-1">
+              <div class="ps-product__thumbnail">
+                <div class="ps-product__image">
+                  <div class="item"><img class="zoom" src="../<%= inventories.image %>" alt="<%= inventories.name %>" data-zoom-image="../<%= inventories.image %>"></div>
+                </div>
+              </div>
+              <div class="ps-product__thumbnail--mobile">
+                <div class="ps-product__main-img"><img src="../<%= inventories.image %>" alt="<%= inventories.name %>"></div>
+              </div>
+              <div class="ps-product__info"> 
+                <h1><%= inventories.name %></h1>
+                <p class="ps-product__category"><%= inventories.class %>,<%= inventories.brand %></p>
+                <h3 class="ps-product__price"> &#8377; <%= inventories.price %></h3>
+                <div class="ps-product__block ps-product__quickview">
+                  <h4>Description</h4>
+                  <p> <%=inventories.description %> </p>
+                </div>
+                <div class="ps-product__shopping"><a class="ps-btn mb-10" href="/purchase/<%=inventories.id%>">Purchase Now<i class="ps-icon-next"></i></a>
+                  <div class="ps-product__actions"><a class="mr-10" href="/dashboard/wishlist/add/<%= inventories.id %>"><i class="ps-icon-heart"></i></a></div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('./partials/_recommended.ejs') %>
+    </div>
+<%- include('./partials/_footer') %>

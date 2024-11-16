@@ -1,0 +1,73 @@
+<%- include('_navbar') %>
+
+<div class="ps-contact ps-section pb-80">
+    <div class="ps-container" style="margin: 0 auto;">
+        <form class="ps-contact__form" action="/add/products" method="get">
+            <div class="form-group">
+                <button class="ps-btn">Add Product<i class="ps-icon-next"></i></button>
+            </div>
+        </form>
+        <a href="/orders/print" class="btn btn-small btn-primary"> Print All Receipts </a>
+        <div class="ps-cart-listing ps-table--whishlist">
+            <table class="table ps-cart__table">
+                <thead>
+                    <tr>
+                        <th> Total Orders </th>
+                        <th> Packed Orders </th>
+                        <th> Shipped Orders </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> <%= ordes.length %> </td>
+                        <td> <% function checkStatus(o){ %>
+                                <% let x = 0, y = 0 %>
+
+                                <% if(o.orderStatus == 'packed'){ %>
+                                    <%    x++; %>
+                                <% }else if(o.orDerStatus == 'shipped'){ %>
+                                    <% y++; %>
+                                <% } %>
+                            <% } %> 
+                            <% orders.every(checkStatus) %>
+                            <%= x %>
+                        </td>
+                        <td> <%= y %> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table ps-cart__table">
+                <thead>
+                    <tr>
+                        <th> Item </th>
+                        <th>Order ID</th>
+                        <th> Customer ID </th>
+                        <th> Customer Name </th>
+                        <th> Customer Address </th>
+                        <th> Customer Email </th>
+                        <th> Order Price </th>
+                        <th> Order Date </th>
+                        <th> Oeder Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% orders.forEach((order) => {  %>
+                        <tr>
+                            <td> <%= order.productName %> </td>
+                            <td> <%= order.id %> </td>
+                            <td> <%= order.userId %> </td>
+                            <td> <%= order.userName %> </td>
+                            <td> <%= order.userAddress %> </td>
+                            <td> <%= order.userEmail %> </td>
+                            <td> &#8377; <%= order.productPrice %></td>
+                            <td> <%= order.orderDate%> </td>
+                            <td> <%= order.orderStatus %> </td>
+                            <td> <a href="/orders/update/<%= order.id %>" class="btn btn-small btn-primary"> Update </a> </td>
+                            <td> <a href="/orders/print/<%= order.id %>" class="btn btn-small btn-primary"> Print </a> </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

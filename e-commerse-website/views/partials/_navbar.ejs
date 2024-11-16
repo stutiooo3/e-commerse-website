@@ -1,0 +1,44 @@
+<div class="header--sidebar"></div>
+<header class="header">
+  <nav class="navigation">
+    <div class="container-fluid">
+      <div class="navigation__column left">
+        <div class="header__logo"><a class="ps-logo" href="/"><img src="<%= site.logoNavbar %>" alt=""></a></div>
+      </div>
+      <div class="navigation__column center">
+            <ul class="main-menu menu">
+              <li class="menu-item"><a href="/">Home</a>
+              </li>
+              <li class="menu-item menu-item-has-children dropdown"><a href="/store/mobile">MOBILES</a>
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="/store/mobile/apple">APPLE</a></li>
+                  <li class="menu-item"><a href="/store/mobile/samsung">SAMSUNG</a></li>
+                  <li class="menu-item"><a href="/store/mobile/oneplus">ONEPLUS</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="/users/login">Login</a>
+              </li>
+            </ul>
+      </div>
+      <div class="navigation__column right">
+        <form class="ps-search--header hideWhenMobile" action="/search" method="POST">
+          <input class="form-control" type="text" placeholder="Search Product…" name="search">
+          <button><i class="ps-icon-search"></i></button>
+        </form>
+        <% if(user){ %>
+            <div class="ps-cart hideWhenMobile"><a class="ps-cart__toggle" href="/dashboard"><i class="fa fa-user"></i></a> </div>
+        <% }%>
+        <div class="menu-toggle"><span></span></div>
+      </div>
+
+      <div class="ps-cart hideWhenMobile"><a class="ps-cart__toggle" href="/cart"><i class="fa fa-shopping-cart"></i></a> </div>
+
+      <div class="container displayWhenMobile searchToggle" id="searchBar" style="text-align: center; padding-top: 60px;">
+        <form class="ps-search" action="/search" method="POST" style="padding-top: 25px; margin: 0 auto;">
+            <input class="form-control" type="text" placeholder="Search Product…" name="search" >
+            <button style=" top: 105px; right: 35px;"><i class="ps-icon-search" style="padding-top: 5px;"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

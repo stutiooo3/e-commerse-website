@@ -1,0 +1,18 @@
+<% if(user){ %>
+    <%- include('./partials/_dashboard_nav') %>
+<% }else{ %>
+    <%- include('./partials/_navbar') %>
+<% } %>
+
+<%- include('./partials/_mobile_nav') %>
+
+    <main class="ps-main">
+        <%- include('./partials/_top_sellers') %>
+
+        <%- include('./partials/_new_added') %>
+
+        <%- include('./partials/_mobiles') %>
+                
+    </main>
+
+<%- include('./partials/_footer') %>
